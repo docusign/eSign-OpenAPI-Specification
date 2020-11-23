@@ -11,8 +11,8 @@
       "email": "devcenter@docusign.com"
     }
   },
-  "host": "www.demo.rooms.docusign.com",
-  "basePath": "/restapi/",
+  "host": "rooms.docusign.com",
+  "basePath": "/restapi",
   "schemes": [
     "https"
   ],
