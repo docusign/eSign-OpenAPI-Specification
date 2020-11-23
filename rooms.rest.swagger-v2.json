@@ -11,8 +11,8 @@
       "email": "devcenter@docusign.com"
     }
   },
-  "host": "rooms.docusign.com",
-  "basePath": "/restapi",
+  "host": "www.demo.rooms.docusign.com",
+  "basePath": "/restapi/",
   "schemes": [
     "https"
   ],
@@ -390,7 +390,12 @@
             "description": "(Optional) An comma-separated list that limits the fields to return:\n\n- `IsRequiredOnCreate`: include fields that are required in room creation.\n- `IsRequiredOnSubmit`: include fields that are required when submitting a room for review.\n",
             "type": "array",
             "items": {
-              "$ref": "#/definitions/FieldsCustomDataFilterType"
+              "enum": [
+                "None",
+                "IsRequiredOnCreate",
+                "IsRequiredOnSubmit"
+              ],
+              "type": "string"
             }
           },
           {
@@ -3098,7 +3103,16 @@
           {
             "in": "query",
             "name": "sort",
-            "description": "(Optional) The order in which to return results. Valid values are:\n\n- `firstNameAsc`: Sort on first name in ascending order. \n- `firstNameDesc`:  Sort on first name in descending order. \n- `lastNameAsc`: Sort on last name in ascending order. \n- `lastNameDesc`: Sort on last name in descending order. This is the default value."
+            "description": "(Optional) The order in which to return results. Valid values are:\n\n- `firstNameAsc`: Sort on first name in ascending order. \n- `firstNameDesc`:  Sort on first name in descending order. \n- `lastNameAsc`: Sort on last name in ascending order. \n- `lastNameDesc`: Sort on last name in descending order. This is the default value.",
+            "enum": [
+              "FirstNameAsc",
+              "LastNameAsc",
+              "EmailAsc",
+              "FirstNameDesc",
+              "LastNameDesc",
+              "EmailDesc"
+            ],
+            "type": "string"
           },
           {
             "in": "path",
@@ -3384,7 +3398,14 @@
           {
             "in": "query",
             "name": "roomStatus",
-            "description": "(Optional) The status of the room. Valid values are:\n\n- `active`: This is the default value.\n- `pending`\n- `open`: Includes both `active` and `pending` statuses.\n- `closed`\n\nTo return rooms with multiple statuses, enter a comma-separated list of statuses. \n\nExample:\n\n`closed,open`"
+            "description": "(Optional) The status of the room. Valid values are:\n\n- `active`: This is the default value.\n- `pending`\n- `open`: Includes both `active` and `pending` statuses.\n- `closed`\n\nTo return rooms with multiple statuses, enter a comma-separated list of statuses. \n\nExample:\n\n`closed,open`",
+            "enum": [
+              "Active",
+              "Pending",
+              "Closed",
+              "Open"
+            ],
+            "type": "string"
           },
           {
             "in": "query",
@@ -4383,7 +4404,16 @@
           {
             "in": "query",
             "name": "sort",
-            "description": "(Optional) Specifies how to sort the results. Valid values are:\n\n- `FirstNameAsc`\n- `LastNameAsc`\n- `EmailAsc`\n- `FirstNameDesc`\n- `LastNameDesc`\n- `EmailDesc`"
+            "description": "(Optional) Specifies how to sort the results. Valid values are:\n\n- `FirstNameAsc`\n- `LastNameAsc`\n- `EmailAsc`\n- `FirstNameDesc`\n- `LastNameDesc`\n- `EmailDesc`",
+            "enum": [
+              "FirstNameAsc",
+              "LastNameAsc",
+              "EmailAsc",
+              "FirstNameDesc",
+              "LastNameDesc",
+              "EmailDesc"
+            ],
+            "type": "string"
           },
           {
             "in": "query",
@@ -4395,7 +4425,15 @@
           {
             "in": "query",
             "name": "accessLevel",
-            "description": "(Optional) Filters for users who have the specified access level. A user's access level and role determine the types of resources and actions that are available to them.\n\nValid values are:\n- Company: Users with this access level can administer resources across the company.\n- Region: Users with this access level can administer offices and other resources within their regions. \n- Office: Users with this access level can administer resources within their offices.\n- Contributor: Users with this access level can only administer their own resources.\n\n**Note**: In requests, the values that you may use for this property depend on your permissions and whether you can add users at your access level or lower. This property applies only to Rooms Version 6. "
+            "description": "(Optional) Filters for users who have the specified access level. A user's access level and role determine the types of resources and actions that are available to them.\n\nValid values are:\n- Company: Users with this access level can administer resources across the company.\n- Region: Users with this access level can administer offices and other resources within their regions. \n- Office: Users with this access level can administer resources within their offices.\n- Contributor: Users with this access level can only administer their own resources.\n\n**Note**: In requests, the values that you may use for this property depend on your permissions and whether you can add users at your access level or lower. This property applies only to Rooms Version 6. ",
+            "enum": [
+              "Contributor",
+              "Office",
+              "Region",
+              "Company",
+              "Admin"
+            ],
+            "type": "string"
           },
           {
             "in": "query",
@@ -4414,7 +4452,12 @@
           {
             "in": "query",
             "name": "status",
-            "description": "(Optional) Filters for users who have the specified `status`.\n\nValid values are:\n\n- `Active`: The user is active.\n- `Pending`: The user has been invited but has not yet accepted the invitation."
+            "description": "(Optional) Filters for users who have the specified `status`.\n\nValid values are:\n\n- `Active`: The user is active.\n- `Pending`: The user has been invited but has not yet accepted the invitation.",
+            "enum": [
+              "Active",
+              "Pending"
+            ],
+            "type": "string"
           },
           {
             "in": "query",
